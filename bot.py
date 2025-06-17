@@ -10,11 +10,12 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-API_KEY = os.getenv("API_KEY")  # OpenAI API Key
+API_KEY = os.getenv("API_KEY")  # Groq বা OpenAI API Key
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 MODEL = os.getenv("MODEL", "gpt-3.5-turbo")
 
 openai.api_key = API_KEY
+openai.api_base = "https://api.groq.com/openai/v1"  # Groq API base URL
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Hi! I am your GPT-4.5 Telegram Bot. Send me any message.")
